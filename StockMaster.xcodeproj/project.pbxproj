@@ -6,17 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		368AD5A62EDEB49000103C43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5A32EDEB49000103C43 /* ContentView.swift */; };
+		368AD5A72EDEB49000103C43 /* StockMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5A42EDEB49000103C43 /* StockMasterApp.swift */; };
+		368AD5A82EDEB49000103C43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 368AD5A22EDEB49000103C43 /* Assets.xcassets */; };
+		368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5AA2EDEB4EC00103C43 /* WebSocketService.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		368AD5942EDEB47F00103C43 /* StockMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		368AD5A22EDEB49000103C43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		368AD5A32EDEB49000103C43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		368AD5A42EDEB49000103C43 /* StockMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMasterApp.swift; sourceTree = "<group>"; };
+		368AD5AA2EDEB4EC00103C43 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		368AD5962EDEB47F00103C43 /* StockMaster */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = StockMaster;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		368AD5912EDEB47F00103C43 /* Frameworks */ = {
@@ -32,7 +35,7 @@
 		368AD58B2EDEB47F00103C43 = {
 			isa = PBXGroup;
 			children = (
-				368AD5962EDEB47F00103C43 /* StockMaster */,
+				368AD5A52EDEB49000103C43 /* StockMaster */,
 				368AD5952EDEB47F00103C43 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +46,33 @@
 				368AD5942EDEB47F00103C43 /* StockMaster.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		368AD5A52EDEB49000103C43 /* StockMaster */ = {
+			isa = PBXGroup;
+			children = (
+				368AD5A42EDEB49000103C43 /* StockMasterApp.swift */,
+				368AD5A32EDEB49000103C43 /* ContentView.swift */,
+				368AD5AC2EDEBB6500103C43 /* Services */,
+				368AD5A92EDEB49800103C43 /* Supporting Files */,
+			);
+			path = StockMaster;
+			sourceTree = "<group>";
+		};
+		368AD5A92EDEB49800103C43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				368AD5A22EDEB49000103C43 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		368AD5AC2EDEBB6500103C43 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				368AD5AA2EDEB4EC00103C43 /* WebSocketService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +89,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				368AD5962EDEB47F00103C43 /* StockMaster */,
 			);
 			name = StockMaster;
 			packageProductDependencies = (
@@ -109,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368AD5A82EDEB49000103C43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368AD5A62EDEB49000103C43 /* ContentView.swift in Sources */,
+				368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */,
+				368AD5A72EDEB49000103C43 /* StockMasterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
