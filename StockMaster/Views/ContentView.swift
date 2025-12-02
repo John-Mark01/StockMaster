@@ -9,7 +9,10 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    let webSocketService = WebSocketServiceImpl()
+    let webSocketService = WebSocketAdapter(
+        webSocket: WebSocketServiceImpl()
+    )
+    
     @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {

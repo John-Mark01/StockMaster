@@ -38,6 +38,8 @@ final class WebSocketServiceImpl: WebSocketService {
         webSocketTask = URLSession.shared.webSocketTask(with: url)
         webSocketTask?.resume()
         
+        print("🟢 Connected to WebSocket\n")
+        
         Task {
             while true {
                 try await recieveMessage()
