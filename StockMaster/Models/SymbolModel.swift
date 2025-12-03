@@ -37,7 +37,7 @@ struct SymbolModel: Identifiable, Equatable, Hashable {
         case .down:
             return "arrow.down.right"
         case .neutral:
-            return "arrow.2.circlepath.circle"
+            return ""
         }
     }
 }
