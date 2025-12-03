@@ -46,6 +46,8 @@ class ContentViewModel: ObservableObject {
             .init(name: "WMT", currentPrice: 90.19, oldPrice: nil),
             .init(name: "SNDK", currentPrice: 211.00, oldPrice: nil)
         ]
+        connectToWebSocket()
+        startUpdatingPrices()
     }
     
     func connectToWebSocket() {

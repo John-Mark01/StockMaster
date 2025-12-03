@@ -14,6 +14,7 @@
 		368AD5B02EDEC47700103C43 /* SymbolDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5AF2EDEC47700103C43 /* SymbolDTO.swift */; };
 		368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */; };
 		368AD5B82EE01A4C00103C43 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */; };
+		368AD5BA2EE0ACEA00103C43 /* SymbolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */; };
 		E724F64F2EE04D8D00B82802 /* SymbolPriceChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */; };
 		E724F6532EE050C400B82802 /* SymbolViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724F6522EE050C400B82802 /* SymbolViewRow.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 		368AD5AF2EDEC47700103C43 /* SymbolDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDTO.swift; sourceTree = "<group>"; };
 		368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAdapter.swift; sourceTree = "<group>"; };
 		368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolModel.swift; sourceTree = "<group>"; };
 		E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPriceChange.swift; sourceTree = "<group>"; };
 		E724F6522EE050C400B82802 /* SymbolViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolViewRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 			children = (
 				E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */,
 				368AD5AF2EDEC47700103C43 /* SymbolDTO.swift */,
+				368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */,
 				368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */,
 				368AD5A72EDEB49000103C43 /* StockMasterApp.swift in Sources */,
+				368AD5BA2EE0ACEA00103C43 /* SymbolModel.swift in Sources */,
 				E724F6532EE050C400B82802 /* SymbolViewRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

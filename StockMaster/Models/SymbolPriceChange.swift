@@ -1,5 +1,4 @@
 //
-//
 // SymbolPriceChange.swift
 // StockMaster
 //     

@@ -1,5 +1,4 @@
 //
-//
 // SymbolViewRow.swift
 // StockMaster
 //     
@@ -70,5 +69,9 @@ struct SymbolViewRow: View {
 }
 
 #Preview {
-    ContentView()
+    SymbolViewRow(
+        symbol: .init(name: "AAPL", currentPrice: 134.12341)
+    )
+    .padding()
+    .border(.gray)
 }
