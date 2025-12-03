@@ -15,6 +15,7 @@
 		368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */; };
 		368AD5B82EE01A4C00103C43 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */; };
 		368AD5BA2EE0ACEA00103C43 /* SymbolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */; };
+		368AD5BE2EE0C42800103C43 /* SymbolDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */; };
 		E724F64F2EE04D8D00B82802 /* SymbolPriceChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */; };
 		E724F6532EE050C400B82802 /* SymbolViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724F6522EE050C400B82802 /* SymbolViewRow.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAdapter.swift; sourceTree = "<group>"; };
 		368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolModel.swift; sourceTree = "<group>"; };
+		368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsScreen.swift; sourceTree = "<group>"; };
 		E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPriceChange.swift; sourceTree = "<group>"; };
 		E724F6522EE050C400B82802 /* SymbolViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolViewRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				368AD5A32EDEB49000103C43 /* FeedScreen.swift */,
+				368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */,
 				368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */,
 				E724F6542EE050CC00B82802 /* Components */,
 			);
@@ -195,6 +198,7 @@
 				368AD5B82EE01A4C00103C43 /* ContentViewModel.swift in Sources */,
 				368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */,
 				368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */,
+				368AD5BE2EE0C42800103C43 /* SymbolDetailsScreen.swift in Sources */,
 				368AD5A72EDEB49000103C43 /* StockMasterApp.swift in Sources */,
 				368AD5BA2EE0ACEA00103C43 /* SymbolModel.swift in Sources */,
 				E724F6532EE050C400B82802 /* SymbolViewRow.swift in Sources */,
@@ -340,6 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,6 +380,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
