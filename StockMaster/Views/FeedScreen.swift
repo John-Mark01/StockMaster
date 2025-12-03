@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FeedScreen: View {
     @StateObject private var viewModel = ContentViewModel(
         webSocket: WebSocketServiceImpl()
     )
@@ -48,6 +48,7 @@ struct ContentView: View {
 
 #Preview {
     NavigationStack {
-        ContentView()
+        FeedScreen()
     }
 }
+
