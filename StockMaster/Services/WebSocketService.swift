@@ -14,7 +14,7 @@ protocol WebSocketService {
     
     func connect() -> Void
     func disconnect() -> Void
-    func sendMessage(_ message: Data) -> Void
+    func sendMessage(_ message: String) -> Void
     func recieveMessage() async throws -> Void
 }
 
@@ -47,11 +47,12 @@ final class WebSocketServiceImpl: WebSocketService {
         webSocketTask?.cancel(with: .goingAway, reason: nil)
     }
     
-    func sendMessage(_ message: Data) {
-        let msg = URLSessionWebSocketTask.Message.data(message)
-        webSocketTask?.send(msg) { error in
+    func sendMessage(_ message: String) {
+        let msg = URLSessionWebSocketTask.Message.string(message)
+        webSocketTask?.send(msg) { [weak self] error in
             if let error = error {
                 print("❌ WebSocket sending error: \(error)")
+                self?.disconnect()
             } else {
                 print("✅ Message: \(message) sent successfully!")
             }

@@ -14,6 +14,7 @@ class ContentViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var symbols: [SymbolDTO] = []
+    @Published var isConnectedCondition: Bool = false
     
     
     init(webSocket: WebSocketService) {
@@ -49,6 +50,10 @@ class ContentViewModel: ObservableObject {
         webSocket.connect()
     }
     
+    func disconnectFromWebSocket() {
+        webSocket.disconnect()
+    }
+    
     func subscribeToWebSocket() {
         webSocket.publisher
             .receive(on: RunLoop.main)
@@ -76,23 +81,20 @@ class ContentViewModel: ObservableObject {
     }
     
     func startUpdatingPrices() {
-        
         Task {
-            while true {
-                try? await Task.sleep(nanoseconds: 2_000_000_000)
-                
-                //                symbols.forEach { symbol in
-                //                }
-                if let symbol = symbols.randomElement() {
+            while isConnectedCondition {
+                for symbol in symbols {
+                    
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
                     let newSymbol = SymbolDTO(
                         name: symbol.name,
                         currentPrice: symbol.currentPrice,
                         newPrice: generateRandomPrice()
                     )
-                    guard let symbolData = convertSymbolToData(newSymbol) else { return }
-                    webSocket.sendMessage(symbolData)
+                    guard let symbolData = convertSymbolToData(newSymbol),
+                          let jsonString = String(data: symbolData, encoding: .utf8) else { return }
+                    webSocket.sendMessage(jsonString)
                 }
-                
             }
         }
     }
