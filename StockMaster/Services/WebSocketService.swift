@@ -14,7 +14,7 @@ protocol WebSocketService {
     
     func connect() -> Void
     func disconnect() -> Void
-    func sendMessage(_ message: String) -> Void
+    func sendMessage(_ message: Data) -> Void
     func recieveMessage() async throws -> Void
 }
 
@@ -27,10 +27,6 @@ final class WebSocketServiceImpl: WebSocketService {
     private var webSocketTask: URLSessionWebSocketTask?
     private let dataSubject = PassthroughSubject<Data, Error>()
     private let urlString: String = "wss://ws.postman-echo.com/raw"
-    
-    init() {
-        connect()
-    }
     
     func connect() {
         guard let url = URL(string: urlString) else { return }
@@ -51,8 +47,8 @@ final class WebSocketServiceImpl: WebSocketService {
         webSocketTask?.cancel(with: .goingAway, reason: nil)
     }
     
-    func sendMessage(_ message: String) {
-        let msg = URLSessionWebSocketTask.Message.string(message)
+    func sendMessage(_ message: Data) {
+        let msg = URLSessionWebSocketTask.Message.data(message)
         webSocketTask?.send(msg) { error in
             if let error = error {
                 print("❌ WebSocket sending error: \(error)")

@@ -27,11 +27,11 @@ class WebSocketAdapter: WebSocketService {
         webSocket.disconnect()
     }
     
-    func sendMessage(_ message: String) {
+    func sendMessage(_ message: Data) {
         Task {
             while true {
                 try? await Task.sleep(nanoseconds: 2_000_000_000)
-                webSocket.sendMessage(generateRandomSymbolMessage())
+                webSocket.sendMessage(message)
             }
         }
     }
