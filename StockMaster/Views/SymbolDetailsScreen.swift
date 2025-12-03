@@ -35,12 +35,14 @@ struct SymbolDetailsScreen: View {
             HStack(alignment: .top) {
                 Text(symbol.name)
                     .font(.title)
+                    .foregroundStyle(Color.text)
                 
                 Spacer()
                 
                 Text("$\(symbol.currentPrice, specifier: "%.2f")")
                     .font(.title2)
                     .bold()
+                    .foregroundStyle(Color.text)
                 
                 Group {
                     Text("\(difference, specifier: "%.2f")")
@@ -54,12 +56,11 @@ struct SymbolDetailsScreen: View {
             Text(symbol.description ?? "")
                 .font(.title3)
                 .multilineTextAlignment(.leading)
+                .foregroundStyle(Color.text)
             
             Spacer()
         }
-        .padding(.horizontal, 16)
-        .navigationTitle(symbol.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .padding(16)
         .frame(maxWidth: .infinity)
     }
 }

@@ -40,7 +40,7 @@ struct FeedScreen: View {
                         }
                     }
                     .buttonStyle(.bordered)
-                    .tint(viewModel.connectionStatus == .connected ? Color.red : Color.green)
+                    .tint(viewModel.connectionStatus == .connected ? Color.priceDown : Color.priceUp)
                 }
                 
                 ToolbarItem(placement: .topBarLeading) {
@@ -48,7 +48,7 @@ struct FeedScreen: View {
                         ProgressView()
                     } else {
                         Circle()
-                            .fill(viewModel.connectionStatus == .connected ? Color.green : Color.red)
+                            .fill(viewModel.connectionStatus == .connected ? Color.priceUp : Color.priceDown)
                             .frame(width: 30, height: 30)
                     }
                 }

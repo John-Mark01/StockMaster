@@ -17,24 +17,24 @@ struct SymbolViewRow: View {
     }
     
     private var priceTextColor: Color {
-        guard animateText else { return Color.black }
+        guard animateText else { return Color.text }
         
         if symbol.priceChange == .up {
-            return Color.green
+            return Color.priceUp
         } else if symbol.priceChange == .down {
-            return Color.red
+            return Color.priceDown
         } else {
-            return Color.black
+            return Color.text
         }
     }
     
     private var indicatorImageColor: Color {
         if symbol.priceChange == .up {
-            return Color.green
+            return Color.priceUp
         } else if symbol.priceChange == .down {
-           return Color.red
+           return Color.priceDown
         } else {
-            return Color.black
+            return Color.text
         }
     }
     
