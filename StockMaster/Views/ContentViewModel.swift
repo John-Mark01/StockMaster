@@ -46,12 +46,10 @@ class ContentViewModel: ObservableObject {
             .init(name: "WMT", currentPrice: 90.19, oldPrice: nil),
             .init(name: "SNDK", currentPrice: 211.00, oldPrice: nil)
         ]
-        
-        connectToWebSocket()
-        subscribeToWebSocket()
     }
     
     func connectToWebSocket() {
+        subscribeToWebSocket()
         webSocket.connect()
     }
     
@@ -60,7 +58,7 @@ class ContentViewModel: ObservableObject {
         self.sendMessageTask = nil
     }
     
-    func subscribeToWebSocket() {
+    private func subscribeToWebSocket() {
         webSocket.publisher
             .receive(on: RunLoop.main)
             .throttle(for: 0.2, scheduler: RunLoop.main, latest: true)

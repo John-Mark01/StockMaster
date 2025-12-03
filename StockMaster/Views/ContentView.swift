@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel(
@@ -35,9 +34,13 @@ struct ContentView: View {
             }
             
             ToolbarItem(placement: .topBarLeading) {
-                Circle()
-                    .fill(viewModel.connectionStatus == .connected ? Color.green : Color.red)
-                    .frame(width: 30, height: 30)
+                if viewModel.connectionStatus == .idle {
+                    ProgressView()
+                } else {
+                    Circle()
+                        .fill(viewModel.connectionStatus == .connected ? Color.green : Color.red)
+                        .frame(width: 30, height: 30)
+                }
             }
         }
     }
