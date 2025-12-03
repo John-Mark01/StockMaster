@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.symbols.sorted(by: { $0.currentPrice > $1.currentPrice }), id: \.name) { symbol in
+            ForEach(viewModel.symbols.sorted(by: { $0.currentPrice > $1.currentPrice }), id: \.id) { symbol in
                 SymbolViewRow(symbol: symbol)
             }
         }
@@ -46,7 +46,7 @@ struct ContentView: View {
 }
 
 struct SymbolViewRow: View {
-    let symbol: SymbolDTO
+    let symbol: SymbolModel
     
     private var formattedPrice: String {
         String(format: "$%.2f", symbol.currentPrice)
@@ -60,14 +60,30 @@ struct SymbolViewRow: View {
             Spacer()
             
             Text(formattedPrice)
-            
-            Image(systemName: "arrow.up.right")
                 .font(.headline)
-                .foregroundStyle(Color.green)
             
-            Image(systemName: "arrow.down.right")
-                .font(.headline)
-                .foregroundStyle(Color.red)
+            if symbol.hasChangedPrice {
+                Group {
+                    switch symbol.priceChange {
+                    case .up:
+                        Image(systemName: "arrow.up.right")
+                            .font(.headline)
+                            .foregroundStyle(Color.green)
+                    case .down:
+                        Image(systemName: "arrow.down.right")
+                            .font(.headline)
+                            .foregroundStyle(Color.red)
+                    case .neutral:
+                        EmptyView()
+                    }
+                }
+                .phaseAnimator([true, false]) { content, phase in
+                    content
+                        .scaleEffect(phase ? 1.2 : 1.0)
+                } animation: { phase in
+                        .spring(duration: 3)
+                }
+            }
         }
     }
 }

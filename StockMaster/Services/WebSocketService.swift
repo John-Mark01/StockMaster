@@ -45,6 +45,9 @@ final class WebSocketServiceImpl: WebSocketService {
     
     func disconnect() {
         webSocketTask?.cancel(with: .goingAway, reason: nil)
+        webSocketTask = nil
+        
+        print("🔴 Disconnected from WebSocket\n")
     }
     
     func sendMessage(_ message: String) {

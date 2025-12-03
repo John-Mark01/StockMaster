@@ -9,6 +9,36 @@ import Foundation
 
 struct SymbolDTO: Codable, Equatable {
     let name: String
-    let currentPrice: Double
-    let newPrice: Double?
+    var currentPrice: Double
+    var newPrice: Double?
+}
+
+struct SymbolModel: Identifiable, Equatable {
+    let id = UUID()
+    let name: String
+    var currentPrice: Double
+    var oldPrice: Double?
+    
+    var priceChange: SymbolPriceChange {
+        guard let oldPrice else { return .neutral }
+        
+        if currentPrice > oldPrice {
+            return .up
+        } else if currentPrice < oldPrice {
+            return .down
+        } else {
+            return .neutral
+        }
+    }
+    
+    var hasChangedPrice: Bool {
+        oldPrice != nil && oldPrice != currentPrice
+    }
+
+}
+
+enum SymbolPriceChange {
+    case up
+    case down
+    case neutral
 }

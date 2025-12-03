@@ -12,34 +12,35 @@ class ContentViewModel: ObservableObject {
     
     private let webSocket: WebSocketService
     private var cancellables = Set<AnyCancellable>()
+    private var sendMessageTask: Task<Void, Error>?
     
-    @Published var symbols: [SymbolDTO] = []
+    @Published var symbols: [SymbolModel] = []
     @Published var isConnectedCondition: Bool = false
     
     
     init(webSocket: WebSocketService) {
         self.webSocket = webSocket
         self.symbols = [
-            .init(name: "AAPL", currentPrice: 140.00, newPrice: nil),
-            .init(name: "MSFT", currentPrice: 290.00, newPrice: nil),
-            .init(name: "GOOGL", currentPrice: 2800.00, newPrice: nil),
-            .init(name: "AMZN", currentPrice: 3400.00, newPrice: nil),
-            .init(name: "FB", currentPrice: 230.00, newPrice: nil),
-            .init(name: "TSLA", currentPrice: 700.00, newPrice: nil),
-            .init(name: "NFLX", currentPrice: 500.00, newPrice: nil),
-            .init(name: "HPE", currentPrice: 300.00, newPrice: nil),
-            .init(name: "NTAP", currentPrice: 120.00, newPrice: nil),
-            .init(name: "CPQ", currentPrice: 150.00, newPrice: nil),
-            .init(name: "WDC", currentPrice: 180.00, newPrice: nil),
-            .init(name: "SEG", currentPrice: 130.00, newPrice: nil),
-            .init(name: "HPE", currentPrice: 300.00, newPrice: nil),
-            .init(name: "SNDK", currentPrice: 200.00, newPrice: nil),
-            .init(name: "HPE", currentPrice: 300.00, newPrice: nil),
-            .init(name: "CPQ", currentPrice: 150.00, newPrice: nil),
-            .init(name: "WDC", currentPrice: 180.00, newPrice: nil),
-            .init(name: "SEG", currentPrice: 130.00, newPrice: nil),
-            .init(name: "HPE", currentPrice: 300.00, newPrice: nil),
-            .init(name: "SNDK", currentPrice: 200.00, newPrice: nil)
+            .init(name: "AAPL", currentPrice: 140.12, oldPrice: nil),
+            .init(name: "MSFT", currentPrice: 290.52, oldPrice: nil),
+            .init(name: "GOOGL", currentPrice: 2800.01, oldPrice: nil),
+            .init(name: "AMZN", currentPrice: 3400.90, oldPrice: nil),
+            .init(name: "META", currentPrice: 231.14, oldPrice: nil),
+            .init(name: "TSLA", currentPrice: 709.78, oldPrice: nil),
+            .init(name: "NFLX", currentPrice: 512.00, oldPrice: nil),
+            .init(name: "NVDA", currentPrice: 366.10, oldPrice: nil),
+            .init(name: "NTAP", currentPrice: 127.07, oldPrice: nil),
+            .init(name: "MA", currentPrice: 154.10, oldPrice: nil),
+            .init(name: "WDC", currentPrice: 180.00, oldPrice: nil),
+            .init(name: "SEG", currentPrice: 130.00, oldPrice: nil),
+            .init(name: "TSM", currentPrice: 912.11, oldPrice: nil),
+            .init(name: "ORCL", currentPrice: 200.00, oldPrice: nil),
+            .init(name: "HPE", currentPrice: 123.12, oldPrice: nil),
+            .init(name: "CPQ", currentPrice: 159.10, oldPrice: nil),
+            .init(name: "PLTR", currentPrice: 180.00, oldPrice: nil),
+            .init(name: "JNJ", currentPrice: 130.00, oldPrice: nil),
+            .init(name: "WMT", currentPrice: 90.19, oldPrice: nil),
+            .init(name: "SNDK", currentPrice: 211.00, oldPrice: nil)
         ]
         
         connectToWebSocket()
@@ -52,6 +53,8 @@ class ContentViewModel: ObservableObject {
     
     func disconnectFromWebSocket() {
         webSocket.disconnect()
+        self.isConnectedCondition = false
+        self.sendMessageTask = nil
     }
     
     func subscribeToWebSocket() {
@@ -81,7 +84,7 @@ class ContentViewModel: ObservableObject {
     }
     
     func startUpdatingPrices() {
-        Task {
+        self.sendMessageTask = Task {
             while isConnectedCondition {
                 for symbol in symbols {
                     
@@ -112,8 +115,9 @@ class ContentViewModel: ObservableObject {
     }
     
     private func updateSymbolInStore(_ symbol: SymbolDTO) {
-        if let index = self.symbols.firstIndex(of: symbol) {
-            self.symbols[index] = symbol
+        if let index = self.symbols.firstIndex(where: {$0.name == symbol.name}) {
+            self.symbols[index].oldPrice = symbol.currentPrice
+            self.symbols[index].currentPrice = symbol.newPrice ?? 0
         }
     }
 }
