@@ -36,9 +36,3 @@ struct SymbolModel: Identifiable, Equatable {
     }
 
 }
-
-enum SymbolPriceChange {
-    case up
-    case down
-    case neutral
-}
