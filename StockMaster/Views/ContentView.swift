@@ -20,26 +20,23 @@ struct ContentView: View {
             }
         }
         .animation(.easeIn(duration: 1.2), value: viewModel.elementWillChange)
-//        .onAppear(perform: viewModel.startUpdatingPrices)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(viewModel.isConnectedCondition ? "Stop" : "Start") {
-                    if viewModel.isConnectedCondition {
+                Button(viewModel.connectionStatus == .connected ? "Stop" : "Start") {
+                    if viewModel.connectionStatus == .connected {
                         viewModel.disconnectFromWebSocket()
-                        viewModel.isConnectedCondition = false
                     } else {
                         viewModel.connectToWebSocket()
                         viewModel.startUpdatingPrices()
-                        viewModel.isConnectedCondition = true
                     }
                 }
                 .buttonStyle(.bordered)
-                .tint(viewModel.isConnectedCondition ? Color.red : Color.green)
+                .tint(viewModel.connectionStatus == .connected ? Color.red : Color.green)
             }
             
             ToolbarItem(placement: .topBarLeading) {
                 Circle()
-                    .fill(viewModel.isConnectedCondition ? Color.green : Color.red)
+                    .fill(viewModel.connectionStatus == .connected ? Color.green : Color.red)
                     .frame(width: 30, height: 30)
             }
         }

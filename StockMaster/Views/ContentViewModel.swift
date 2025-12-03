@@ -17,8 +17,9 @@ class ContentViewModel: ObservableObject {
     @Published var symbols: [SymbolModel] = [] {
         willSet { elementWillChange = true}
     }
-    @Published var isConnectedCondition: Bool = false
+
     @Published var elementWillChange: Bool = false
+    @Published var connectionStatus: ConnectionStatus = .idle
     
     
     init(webSocket: WebSocketService) {
@@ -56,7 +57,6 @@ class ContentViewModel: ObservableObject {
     
     func disconnectFromWebSocket() {
         webSocket.disconnect()
-        self.isConnectedCondition = false
         self.sendMessageTask = nil
     }
     
@@ -71,7 +71,6 @@ class ContentViewModel: ObservableObject {
                     case .finished:
                         break
                     case .failure(let erorr):
-                        self.webSocket.disconnect()
                         print("Error in subscriber: \(erorr.localizedDescription)")
                     }
                 },
@@ -84,11 +83,14 @@ class ContentViewModel: ObservableObject {
             )
             .store(in: &cancellables)
         
+        webSocket.connectionPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: &$connectionStatus)
     }
     
     func startUpdatingPrices() {
         self.sendMessageTask = Task {
-            while isConnectedCondition {
+            while connectionStatus != .disconnected {
                 for symbol in symbols {
                     
                     try? await Task.sleep(nanoseconds: 2_000_000_000)
