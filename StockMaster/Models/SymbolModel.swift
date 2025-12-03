@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SymbolModel: Identifiable, Equatable {
+struct SymbolModel: Identifiable, Equatable, Hashable {
     let id = UUID()
     let name: String
     var currentPrice: Double
