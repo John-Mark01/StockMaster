@@ -14,8 +14,11 @@ class ContentViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var sendMessageTask: Task<Void, Error>?
     
-    @Published var symbols: [SymbolModel] = []
+    @Published var symbols: [SymbolModel] = [] {
+        willSet { elementWillChange = true}
+    }
     @Published var isConnectedCondition: Bool = false
+    @Published var elementWillChange: Bool = false
     
     
     init(webSocket: WebSocketService) {
