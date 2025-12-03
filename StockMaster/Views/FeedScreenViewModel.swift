@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ContentViewModel: ObservableObject {
+final class FeedScreenViewModel: ObservableObject {
     
     private let webSocket: WebSocketService
     private var cancellables = Set<AnyCancellable>()

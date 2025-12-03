@@ -13,7 +13,7 @@
 		368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5AA2EDEB4EC00103C43 /* WebSocketService.swift */; };
 		368AD5B02EDEC47700103C43 /* SymbolDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5AF2EDEC47700103C43 /* SymbolDTO.swift */; };
 		368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */; };
-		368AD5B82EE01A4C00103C43 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */; };
+		368AD5B82EE01A4C00103C43 /* FeedScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B72EE01A4C00103C43 /* FeedScreenViewModel.swift */; };
 		368AD5BA2EE0ACEA00103C43 /* SymbolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */; };
 		368AD5BE2EE0C42800103C43 /* SymbolDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */; };
 		E724F64F2EE04D8D00B82802 /* SymbolPriceChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */; };
@@ -28,7 +28,7 @@
 		368AD5AA2EDEB4EC00103C43 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		368AD5AF2EDEC47700103C43 /* SymbolDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDTO.swift; sourceTree = "<group>"; };
 		368AD5B32EDEC76200103C43 /* WebSocketAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAdapter.swift; sourceTree = "<group>"; };
-		368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		368AD5B72EE01A4C00103C43 /* FeedScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenViewModel.swift; sourceTree = "<group>"; };
 		368AD5B92EE0ACEA00103C43 /* SymbolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolModel.swift; sourceTree = "<group>"; };
 		368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailsScreen.swift; sourceTree = "<group>"; };
 		E724F64E2EE04D8D00B82802 /* SymbolPriceChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPriceChange.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			children = (
 				368AD5A32EDEB49000103C43 /* FeedScreen.swift */,
 				368AD5BD2EE0C42800103C43 /* SymbolDetailsScreen.swift */,
-				368AD5B72EE01A4C00103C43 /* ContentViewModel.swift */,
+				368AD5B72EE01A4C00103C43 /* FeedScreenViewModel.swift */,
 				E724F6542EE050CC00B82802 /* Components */,
 			);
 			path = Views;
@@ -195,7 +195,7 @@
 				E724F64F2EE04D8D00B82802 /* SymbolPriceChange.swift in Sources */,
 				368AD5B02EDEC47700103C43 /* SymbolDTO.swift in Sources */,
 				368AD5A62EDEB49000103C43 /* FeedScreen.swift in Sources */,
-				368AD5B82EE01A4C00103C43 /* ContentViewModel.swift in Sources */,
+				368AD5B82EE01A4C00103C43 /* FeedScreenViewModel.swift in Sources */,
 				368AD5AB2EDEB4EC00103C43 /* WebSocketService.swift in Sources */,
 				368AD5B42EDEC77200103C43 /* WebSocketAdapter.swift in Sources */,
 				368AD5BE2EE0C42800103C43 /* SymbolDetailsScreen.swift in Sources */,

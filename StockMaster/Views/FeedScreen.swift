@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedScreen: View {
-    @StateObject private var viewModel = ContentViewModel(
+    @StateObject private var viewModel = FeedScreenViewModel(
         webSocket: WebSocketServiceImpl()
     )
     
