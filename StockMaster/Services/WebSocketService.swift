@@ -16,7 +16,7 @@ protocol WebSocketService {
     func connect() -> Void
     func disconnect() -> Void
     func sendMessage(_ message: String) -> Void
-    func recieveMessage() async throws -> Void
+    func recieveMessage() async -> Void
 }
 
 final class WebSocketServiceImpl: WebSocketService {
@@ -30,46 +30,63 @@ final class WebSocketServiceImpl: WebSocketService {
     }
     
     private var webSocketTask: URLSessionWebSocketTask?
+    private var receiveTask: Task<Void, Never>?
     private let dataSubject = PassthroughSubject<Data, Error>()
     private let connectionSubject = CurrentValueSubject<ConnectionStatus, Never>(.idle)
     private let urlString: String = "wss://ws.postman-echo.com/raw"
     
     func connect() {
+        //cancel task explicitly if existing
+        if webSocketTask != nil {
+            disconnect()
+        }
+        
         guard let url = URL(string: urlString) else { return }
         
         connectionSubject.send(.idle)
+        
         webSocketTask = URLSession.shared.webSocketTask(with: url)
         webSocketTask?.resume()
         
-        Task {
-            try await recieveMessage()
+        receiveTask = Task { [weak self] in
+            await self?.recieveMessage()
         }
     }
     
     func disconnect() {
+        receiveTask?.cancel()
+        receiveTask = nil
+        
         webSocketTask?.cancel(with: .goingAway, reason: nil)
         webSocketTask = nil
-        connectionSubject.send(.disconnected)
         
+        connectionSubject.send(.disconnected)
         print("🔴 Disconnected from WebSocket\n")
     }
     
     func sendMessage(_ message: String) {
+        guard let task = webSocketTask else {
+            return
+        }
+        
         let msg = URLSessionWebSocketTask.Message.string(message)
-        webSocketTask?.send(msg) { [weak self] error in
+        task.send(msg) { error in
             if let error = error {
-                print("❌ WebSocket sending error: \(error)")
-                self?.disconnect()
+                print("❌ Send error: \(error)")
             } else {
                 print("✅ Message: \(message) sent successfully!")
             }
         }
     }
     
-    func recieveMessage() async throws {
+    func recieveMessage() async {
         var isFirstMessage = true
         
-        while let task = webSocketTask {
+        while !Task.isCancelled {
+            guard let task = webSocketTask else {
+                break
+            }
+            
             do {
                 let message = try await task.receive()
                 
@@ -80,22 +97,25 @@ final class WebSocketServiceImpl: WebSocketService {
                 }
                 
                 switch message {
-                case let .string(string):
-                    dataSubject.send(string.data(using: .utf8) ?? Data())
-                case let .data(data):
+                case .string(let string):
+                    if let data = string.data(using: .utf8) {
+                        dataSubject.send(data)
+                    }
+                case .data(let data):
                     dataSubject.send(data)
                 @unknown default:
                     break
                 }
+                
             } catch {
-                self.disconnect()
-                dataSubject.send(completion: .failure(error))
-                throw error
+                if !Task.isCancelled {
+                    dataSubject.send(completion: .failure(error))
+                }
+                //break out of loop, if error occurs
+                break
             }
         }
     }
-    
-    
 }
 
 enum ConnectionStatus: Equatable {
