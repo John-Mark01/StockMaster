@@ -11,9 +11,7 @@ import SwiftUI
 struct StockMasterApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                FeedScreen()
-            }
+            FeedScreen()
         }
     }
 }
