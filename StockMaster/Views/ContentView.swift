@@ -19,6 +19,7 @@ struct ContentView: View {
                 SymbolViewRow(symbol: symbol)
             }
         }
+        .animation(.easeIn(duration: 1.2), value: viewModel.elementWillChange)
 //        .onAppear(perform: viewModel.startUpdatingPrices)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -40,49 +41,6 @@ struct ContentView: View {
                 Circle()
                     .fill(viewModel.isConnectedCondition ? Color.green : Color.red)
                     .frame(width: 30, height: 30)
-            }
-        }
-    }
-}
-
-struct SymbolViewRow: View {
-    let symbol: SymbolModel
-    
-    private var formattedPrice: String {
-        String(format: "$%.2f", symbol.currentPrice)
-    }
-    
-    var body: some View {
-        HStack(spacing: 8) {
-            Text(symbol.name.uppercased())
-                .font(.title)
-            
-            Spacer()
-            
-            Text(formattedPrice)
-                .font(.headline)
-            
-            if symbol.hasChangedPrice {
-                Group {
-                    switch symbol.priceChange {
-                    case .up:
-                        Image(systemName: "arrow.up.right")
-                            .font(.headline)
-                            .foregroundStyle(Color.green)
-                    case .down:
-                        Image(systemName: "arrow.down.right")
-                            .font(.headline)
-                            .foregroundStyle(Color.red)
-                    case .neutral:
-                        EmptyView()
-                    }
-                }
-                .phaseAnimator([true, false]) { content, phase in
-                    content
-                        .scaleEffect(phase ? 1.2 : 1.0)
-                } animation: { phase in
-                        .spring(duration: 3)
-                }
             }
         }
     }

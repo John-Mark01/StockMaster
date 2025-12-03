@@ -3,8 +3,7 @@
 // SymbolViewRow.swift
 // StockMaster
 //     
-// Created by Iteco Ltd. (https://iteco.bg) on 3.12.25
-// Copyright (c) 2025 . All rights reserved.
+// Created by John-Mark Iliev on 3.12.25
 //
 
 import SwiftUI
@@ -63,7 +62,7 @@ struct SymbolViewRow: View {
         }
         .onChange(of: symbol.hasChangedPrice) { _, _ in
             animateText = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
                 animateText = false
             }
         }
