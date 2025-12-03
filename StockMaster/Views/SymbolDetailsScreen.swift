@@ -51,7 +51,7 @@ struct SymbolDetailsScreen: View {
                 .foregroundStyle(percentageColor)
             }
             
-            Text(symbol.desctrption ?? "")
+            Text(symbol.description ?? "")
                 .font(.title3)
                 .multilineTextAlignment(.leading)
             
@@ -71,7 +71,7 @@ struct SymbolDetailsScreen: View {
                 name: "AAPL",
                 currentPrice: 144.23,
                 oldPrice: 90.12,
-                desctrption: "This is a description for Apple Inc. symbol. So long as this is a description, it should be good enough."
+                description: "This is a description for Apple Inc. symbol. So long as this is a description, it should be good enough."
             )
         )
     }

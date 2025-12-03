@@ -12,7 +12,7 @@ struct SymbolModel: Identifiable, Equatable, Hashable {
     let name: String
     var currentPrice: Double
     var oldPrice: Double?
-    var desctrption: String?
+    var description: String?
     
     var priceChange: SymbolPriceChange {
         guard let oldPrice else { return .neutral }
