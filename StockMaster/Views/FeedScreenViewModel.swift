@@ -25,12 +25,12 @@ final class FeedScreenViewModel: ObservableObject {
     init(webSocket: WebSocketService) {
         self.webSocket = webSocket
         populateSymbols()
+        subscribeToWebSocket()
         connectToWebSocket()
         startUpdatingPrices()
     }
     
     func connectToWebSocket() {
-        subscribeToWebSocket()
         webSocket.connect()
     }
     
